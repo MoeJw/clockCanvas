@@ -9,7 +9,7 @@ function eq(cx=200,cy=200,r=60){
        // angle=0
        
     }else{
-        angle=angle+0.05
+        angle=angle+0.008
         requestAnimationFrame(Frame)
        
     }
