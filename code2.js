@@ -57,62 +57,51 @@ function Node(x,y,rad,val){  ///// constructor of the Node
         text.fillStyle="blue";
 		text.stroke();
 		text.font = "10px Arial";
-       text.fillText("",200,200);
+	   text.fillText("",200,200);
+	   
+
+
+	   for(var i=1;i<=12;i++){
+		
+		x = 195 + 100* Math.cos(-Hour_Minute(i,0))   ///  -convert(180)/2
+		y = 206 + 100* Math.sin(-Hour_Minute(i,0))   ///
+	
+		text.font = "19px Arial";
+	if(i==3	){
+		text.fillText(i,x,y+5);
+	
+	}else if(i==4){
+		text.fillText(i,x,y+7);
+	}else if(i==5){
+		text.fillText(i,x-7,y);
+	}else if(i==6){
+		text.fillText(i,x-5,y);
+	}
+	//////
+	else if(i==9){
+		text.fillText(i,x,y+5);
+	}else if(i==10){
+		text.fillText(i,x-3,y+5);
+	}else if(i==11){
+		text.fillText(i,x-5,y+5);
+	}else if(i==12){
+		text.fillText(i,x-8,y);
+	}
+	
+	else{
+		text.fillText(i,x,y);
+	}
+		
+	
+	
+	
+	
+	
+}
 
 	}
 	
-	for(var i=1;i<=12;i++){
-		/*if(i<3){
-			x = 200 + (rad-12)* Math.cos(Hour_Minute(i,0))   ///  -convert(180)/2
-			y = 200 + 100* Math.sin(Hour_Minute(i,0))
-		}else{
-			x = 200 + 105* Math.cos(-Hour_Minute(i,0))   ///  -convert(180)/2
-			y = 200 + 105* Math.sin(-Hour_Minute(i,0))   ///
-		}
-		if(i==12){
-			x = 200 + 105* Math.cos(-Hour_Minute(i,0))   ///  -convert(180)/2
-			y = 200 + (rad-12)* Math.sin(-Hour_Minute(i,0))   ///
-		}
-		if(i==11||i==3||i==4){
-			x = 200 + 103* Math.cos(-Hour_Minute(i,0))   ///  -convert(180)/2
-			y = 200 + (rad-12)* Math.sin(-Hour_Minute(i,0))   ///
-		}*/
-		
-			x = 195 + 100* Math.cos(-Hour_Minute(i,0))   ///  -convert(180)/2
-			y = 206 + 100* Math.sin(-Hour_Minute(i,0))   ///
-		
-			text.font = "19px Arial";
-		if(i==3	){
-			text.fillText(i,x,y+5);
-		
-		}else if(i==4){
-			text.fillText(i,x,y+7);
-		}else if(i==5){
-			text.fillText(i,x-7,y);
-		}else if(i==6){
-			text.fillText(i,x-5,y);
-		}
-		//////
-		else if(i==9){
-			text.fillText(i,x,y+5);
-		}else if(i==10){
-			text.fillText(i,x-3,y+5);
-		}else if(i==11){
-			text.fillText(i,x-5,y+5);
-		}else if(i==12){
-			text.fillText(i,x-8,y);
-		}
-		
-		else{
-			text.fillText(i,x,y);
-		}
-			
-		
-		
-		
-		
-		
-	}
+	
 	
 
 

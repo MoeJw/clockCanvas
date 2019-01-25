@@ -20,46 +20,64 @@
 
 */
 node2 =new Node(200,200,120,6) // the circle
-one =new line(200,200,250,200)
+secondes =new line(200,200,250,200)
 Minutes =new line(200,200,200,150)
 Hours=new line(200,200,250,200)
 var currentdate=null
 var timeList=null
 var count=0
-angle=18
-flag=1
+
 flag_on_Changing_Hour=0
 
 var startTime, endTime;
 count=0
+temp=0
+nn=[]
+timeList=[]
 function setTime(){
     currentdate = new Date(); 
      var datetime =   currentdate.getHours() + " "  
                 + currentdate.getMinutes() + " " 
                 + currentdate.getSeconds();
-        timeList=datetime.split(" ")
-        timeList[2]=parseInt(timeList[2])
-        timeList[1]=parseInt(timeList[1])
-        timeList[0]=parseInt(timeList[0])
-        temp=12
-        timeList[0]=12
-        timeList[1]=0
-       
-        x = 195 + 70 * Math.cos(-Hour_Minute(timeList[0],timeList[1]))   ///  -convert(180)/2
-        y = 206 + 70 * Math.sin(-Hour_Minute(timeList[0],timeList[1]))   ///
+        nn=datetime.split(" ")
+        timeList[2]=parseInt(nn[2])
+        timeList[1]=+parseInt(nn[1])
+        timeList[0]=parseInt(nn[0])
+        
+        //temp=12
+        //timeList[0]=12
+       // timeList[1]=0
+      //timeList[0]=
+       //timeList[1]=5
+        x = 195 + 60 * Math.cos(-Hour_Minute(timeList[0],nn[1]))   ///  -convert(180)/2
+        y = 206 + 60 * Math.sin(-Hour_Minute(timeList[0],nn[1]))   ///
         Hours.Sx=x
         Hours.Sy=y
         Hours.ex=195
         Hours.ey=206
+       
+        temp=Minute_(timeList[1]+timeList[2]/60)
+       console.log(timeList[1]+timeList[2]/60) 
 
-        x = 195 + 70 * Math.cos(-Hour_Minute(timeList[0],timeList[1]))   ///  -convert(180)/2
-        y = 206 + 70 * Math.sin(-Hour_Minute(timeList[0],timeList[1]))   ///
-
+        x = 195 +90 * Math.cos(-temp)   ///  -convert(180)/2
+        y = 206 + 90 * Math.sin(-temp)   ///
+    
+        
+        Minutes.Sx=x
+        Minutes.Sy=y
+        Minutes.ex=195
+        Minutes.ey=206
+    
+        x = 195 +100 * Math.cos(-Minute_(timeList[2]))   ///  -convert(180)/2
+        y = 206 + 100 * Math.sin( -Minute_(timeList[2]))   ///
 
         
+         secondes.Sx=x
+        secondes.Sy=y
+        secondes.ex=195
+        secondes.ey=206
 
-       
-            console.log(x,y)
+
         
 
 }
@@ -81,6 +99,26 @@ function convert_Hours_to_dgree(Hour){
     return Hour
 }
 function Minute_(Minute){
+  
+  if(Minute<=15){
+      return convert(90-Minute*6)
+  }
+  
+  if(Minute>=16&&Minute<=30){
+    
+      return convert(360-(Minute-15)*6)//+Minute_(timeList[2])
+}
+
+if(Minute>=31&&Minute<=45){
+    
+    //console.log(360-(Minute))
+    return convert(270-(Minute-30)*6)
+}
+if(Minute>=46&&Minute<=60){
+   
+    return convert(180-(Minute-45)*6)
+}
+
 
 }
 function Hour_Minute(Hour,Minute){
@@ -97,7 +135,7 @@ function Hour_Minute(Hour,Minute){
     //console.log(Hour+Minute)    
    
         
-        return  Hour+Minute
+        return  Hour-Minute
     
    
    
@@ -107,79 +145,9 @@ function convert(number){   /// will this to convert form Radian to dgree obviou
     number=number/57.295779513
     return number
 }
-function start() {
-  startTime = new Date();
-};
-
-function end() {
-  endTime = new Date();
-  var timeDiff = endTime - startTime; //in ms
-  // strip the ms
- timeDiff /= 1000;
-
-  // get seconds 
-  var seconds = timeDiff//Math.round(timeDiff);
-  //console.log(seconds + " seconds");
-return seconds
-}
-
-function eq(cx=200,cy=200,r=100){
-    if(false){
-       // angle=0
-        
-    }else{
-        angle=angle+0.0025  
-       // requestAnimationFrame(Frame)
-       
-    }
-   
-    
-     if(true){
-       /* x = cx + r * Math.cos(-Hour_Minute(8,60))   ///  -convert(180)/2
-        y = cy + r * Math.sin(-Hour_Minute(8,60))   ///
-        
-         
-
-    
-        Minutes.Sx=x
-        Minutes.Sy=y
-        Minutes.ex=200
-        Minutes.ey=200
-        flag=1
-        count++*/
-       
-         
-     }
-         
-       
-   
-}
-
-
-function Frame(){
-    if(flag){
-        start()
-        flag=0
-    }
-         
-    eq()
-                      
-   // text.clearRect(0,0,window.innerWidth,window.innerHeight);
-    
-    node2.draw2()
-    //one.draw()
-        //Minutes.draw()
-    Hours.draw()
-   
-    
-       
-}
 
 
 
-
-
-Frame()
 
 /*
 Last Sync: 20/1/2019 @ 20:20:33
